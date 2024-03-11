@@ -1,0 +1,32 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+background-image: linear-gradient(-153deg,rgb(218, 120, 8) 50%,rgb(208, 203, 223) 50%);
+}
+
+form {
+    background-color: white;
+    padding: 70px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+}
+
+
+
+button {
+    background-color: orange;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+

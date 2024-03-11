@@ -1,0 +1,324 @@
+<script>
+  // Initialize the session
+const session = require('express-session');
+const express = require('express');
+const app = express();
+
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+
+// Check if the user is logged in, if not then redirect him to login page
+app.use((req, res, next) => {
+    if (!req.session.loggedin) {
+        res.redirect('login.html');
+        return;
+    }
+    next();
+});
+
+</script>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTMS Home Page</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="lib/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Add Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+  <header>
+    <div class="col-12" id="breakinginfo">
+      <p>BREAKING INFO BAR</p>
+  
+    </div>
+    
+    <!-- navigation Bar -->
+  
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Logo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="row collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="col-1 nav-item">
+              <a class="nav-link" onclick="openModalShip()">Shipping</a>
+            </li>
+            <li class="col-1 nav-item">
+              <a class="nav-link" href="#">Tracking</a>
+            </li>
+            <li class="col-1 nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>  
+            <li class=" col-1 nav-item">
+              <a class="nav-link" href="#">Solutions</a>
+            </li>  
+            <li class=" row nav-item login">
+              <a class=" col-12 btn-primary nav-link" href="login.html">Login</a>
+            </li>  
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+    <!-- navigation Bar Ending -->
+
+  </header>
+  
+  <div class="container-fluid" id="background">
+    <main>
+      <section class="row hero my-4 text-white">
+        <div class="col-12 options">
+          <ul>
+            <li><a href="#"><button class="btn btn-outline-primary col-md-1">TRACK</button></a></li>
+            <li><button class="btn btn-outline-primary col-md-1" onclick="openModal()" >TENDER</button></li>
+            <li><button class="btn btn-outline-primary col-md-1" onclick="openModalShip()" >SHIP</button></li>
+            <li><a href="#"><button class="btn btn-outline-primary col-md-1">OTHER</button></a></li>
+          </ul>
+
+        </div>
+        <div class="row mb-2 search col-md-8">
+          <div class="searchbar2">
+            <form autocomplete="off" action="/action_page.php">
+              <div class="autocomplete mr-5" style="width:100%;">
+                  <input id="myInput" class="form-control me-2" type="text" placeholder="Enter Your Tracking Number">
+              </div>
+              <button class="btn btn-primary mx-2 my-sm-0 " type="submit">Track</button>
+            </form>
+
+          </div>
+          
+        </div>
+        <div class="row my-2">
+        <h1>Ship with GTMS</h1>
+        <p>Discover reliable shipping and tracking solutions.</p>
+        <a href="#" class="btn btn-primary mx-2 my-sm-0 col-md-2 ">Get Started</a>
+        </div>
+      </section>
+      
+      <section class="row my-3" id="features">
+        <div class="col-md-4 my-2 feature1">
+          <div class="p-5 text-dark featureborder">
+          <h2>Track Shipment</h2>
+          <p>Quickly and easily track your package.</p>
+          <a href="#" class="btn btn-primary mx-2 my-sm-0 col-md-8 ">Track Now</a>
+          </div>
+        </div>
+        <div class="col-md-4 my-2 feature2">
+          <div class="p-5 featureborder">
+          <h2>Shipping Services</h2>
+          <p>Explore our range of shipping services.</p>
+          <a href="#" class="btn btn-primary mx-2 my-sm-0 col-md-8 ">Learn More</a>
+          </div>
+        </div>
+        <div class="col-md-4 my-2 feature3">
+          <div class="p-5 featureborder">
+          <h2>Custom Solutions</h2>
+          <p>Find custom solutions for your business.</p>
+          <a href="#" class="btn btn-primary mx-2 my-sm-0 col-md-8 ">Explore Solutions</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div class="container-fluid">
+    <footer class="row">
+      <div class="footerinfo">
+        <div class="info1 col-md-3">
+          <h4>Our Company</h4>
+          <li><a href="#">Our services</a></li>
+          <li><a href="#">Conditions of carriage</a></li>
+         <li><a href="#">Our schedule</a></li> 
+          <li><a href="#">Partners and integration</a></li>
+        </div>
+        <div class="info2 col-md-3">
+          <h4>Legal Information</h4>
+          <li><a href="#">Terms of use</a></li>
+         <li> <a href="#">Privacy policy</a></li>
+         <li><a href="#">Accessibility</a></li> 
+        </div>
+        <div class="info3 col-md-3">
+          <h4>More From Us</h4>
+          <li>
+            <a href="#">Resources</a>
+          </li>
+          <li>
+            <a href="#">Our locations</a>
+          </li>
+          <li>
+          <a href="#">Feedback</a>
+          </li>
+        </div>
+        <div class="info4 col-md-3">
+          <p>cameroon</p>
+          <select id="language">
+            <option value="en">English</option>
+            <option value="fr">French</option>
+          </select>
+         
+         
+          
+        </div>
+        
+      </div>
+      <div class="col-12 text-center">
+        <p>&copy; my project all rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+     
+      
+
+
+
+  <!-- Modal -->
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content p-3">
+      <form action="" method="post" class="modal-form p-3">
+        <div class="container-fluid">
+          <div class="col-12">
+              <h6>*Required details for luggage</h6>
+          </div>
+          <div class="row" id="from-to">
+            <div class="col-md-6">
+              <input type="text" id="to" name="to" class="form-control mb-2 " placeholder="From:">
+            </div>
+            <div class="col-md-6">
+              <input type="text" id="to" name="to" class="form-control mb-2" placeholder="To:">
+            </div>
+          </div>
+          <div class="col-12">
+            <h6>Parcel Information</h6>
+          </div>
+          <div class="row" id="weigt-length">
+            <div class="col-md-3">
+              <input type="text" id="to" name="to" class="form-control mb-2" placeholder="Weight(kg):">
+            </div>
+            <div class="col-md-3">
+              <input type="text" id="to" name="to" class="form-control mb-2" placeholder="Length(cm):">
+            </div>
+            <div class="col-md-3">
+              <input type="text" id="to" name="to" class="form-control mb-2" placeholder="Width(cm):">
+            </div>
+            <div class="col-md-3">
+              <input type="text" id="to" name="to" class="form-control mb-2" placeholder="Height(cm):">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <button type="submit" name="getTender" class="btn btn-primary mt-3">GET TENDER</button>
+          </div>
+  
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Ship -->
+<div id="ModalShip" class="modal fade">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content p-3">
+      <form action="http://localhost:3000/api/shipments" method="post" >
+        <div class="container-fluid">
+          <div class="col-12">
+              <h6>*Create a shipment</h6>
+              <p><center>Required details</center></p>
+              <h5>SENDER'S DETAILS:</h5>
+          </div>
+          <div class="row" id="sender">
+            <div class="col-md-6">
+              <input type="text" id="fullName" name="fullName" class="form-control mb-2 " placeholder="Full Names:">
+            </div>
+            <div class="col-md-6">
+              <input type="text" id="email" name="email" class="form-control mb-2 " placeholder="Email:">
+            </div>
+            <div class="col-md-6">
+              <input type="text" id="idNumber" name="idNumber" class="form-control mb-2 " placeholder="ID card Number:">
+            </div>
+            <div class="col-md-6">
+              <input type="number" id="phone" name="phone" class="form-control mb-2 " placeholder="phone Number:">
+            </div>
+            <div class="col-md-6">
+              <input type="text" id="town" name="town" class="form-control mb-2 " placeholder="Town/City:">
+            </div>
+            <div class="col-md-6">
+              <input type="text" id="homeAddress" name="homeAddress" class="form-control mb-2 " placeholder="Home Address:(optional)">
+            </div>
+            <div class="col-md-6">
+              <input type="datetime-local" id="date" name="date" class="form-control mb-2 " placeholder="Date">
+            </div>
+            <div class="col-md-6">
+              <input type="image" id="date" name="image" class="form-control mb-2 " placeholder="Package Image">
+            </div>
+          </div>
+          <div class="col-12">
+            <h6>RECEIVER'S DETAILS</h6>
+          </div>
+          <div class="row" id="receiver">
+            <div class="col-md-6">
+              <input type="text" id="fullName" name="fullName" class="form-control mb-2 " placeholder="Full Names:" id="fullName">
+            </div>
+            <div class="col-md-6">
+              <input type="text" id="email" name="email" class="form-control mb-2 " placeholder="Email:">
+            </div>
+            <div class="col-md-6">
+              <input type="text" id="idNumber" name="idNumber" class="form-control mb-2 " placeholder="ID card Number:">
+            </div>
+            <div class="col-md-6">
+              <input type="number" id="phonenumber" name="phonenumber" class="form-control mb-2 " placeholder="phone Number:">
+            </div>
+            <div class="col-md-6">
+              <input type="text" id="town" name="town" class="form-control mb-2 " placeholder="Town/City:">
+            </div>
+            <div class="col-md-6">
+              <input type="text" id="homeAddress" name="homeAddress" class="form-control mb-2 " placeholder="Home Address:(optional)">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <button type="submit" name="back" class="btn btn-primary mt-3">back</button>
+            <button type="submit" name="ship" class="btn btn-primary mt-3">SHIP</button>
+            
+          </div>
+  
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+        
+
+
+<script>
+  // Open the modal
+  function openModal() {
+    $('#myModal').modal('show');
+ 
+  }
+
+  function openModalShip() {
+    $('#ModalShip').modal('show');
+  }
+
+
+</script>
+</body>
+</html>
+
+

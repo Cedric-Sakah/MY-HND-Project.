@@ -1,0 +1,115 @@
+*{
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+  
+  header {
+    background-color: #000;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+  }
+  .container-fluid{
+    padding: 0% 0% 0% 0%;
+  }
+  main{
+    padding: 10px;
+    margin-top: 100px;
+  }
+  .login{
+    margin-left: 75%;
+  }
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  header nav ul li {
+    display: inline;
+  }
+  header nav ul li a{
+    text-decoration: none;
+  }
+  
+  .hero .options ul {
+    list-style: none;
+    display: flex;
+    text-align: center;
+    padding: 0px;
+  }
+  .hero .options ul li{
+    padding-right: 10px;
+  }
+  .collapse button{
+    padding: 2px 20px;
+  }
+  .options button{
+    padding: 2px 2px;
+    margin-right:16px;
+    width: 100%;
+    border-radius: 5px;
+  }
+  .search button{
+    padding: 0.2% 6%;
+  }
+  /* #features {
+    display: flex;
+    justify-content: space-around;
+  } */
+  
+  /* .feature {
+    text-align: center;
+    padding: 20px;
+  } */
+  [class*="feature"]{
+    float: left;
+    width: 100%;
+    text-align: center;
+  }
+  [class*="info"]{
+    float: left;
+    text-align: center;
+    width: 100%;
+  }
+.featureborder{
+ 
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.767);
+  
+}
+.featureborder h2{
+  font-weight: bolder;
+}
+  
+  #breakinginfo{
+    background-image:  linear-gradient(to bottom,#4ba2ff,#0067d4);
+    text-align: center;
+    font-weight: bolder;
+    padding: 2px 0px;
+  
+  }
+  footer{
+    padding-top: 3%;
+    color: white;
+    background-color: #0f0f0f;
+    font-size: small ;
+  }
+  
+ form{
+  display: flex;
+ }
+ #background{
+  background-image: url(images/earth.jpg);
+  background-position: bottom;
+  background-size: cover;
+ }
+ 
+  footer div{
+    list-style: none;
+  }
+  footer div li a{
+    text-decoration: none;
+  }

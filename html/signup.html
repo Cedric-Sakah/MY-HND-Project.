@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+  
+  
+    <style>
+        body {
+        background-image: url(images/deliveyblue.png);
+        background-position: center;
+        background-size: cover; 
+        }
+
+        @media (max-width: 768px) {
+        body {
+            background-size: contain; 
+        }
+        }
+        .wrapper{ 
+            margin-top: 50px;
+            width: 100%; 
+            padding: 20px; 
+        }
+        input{
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        .borderblack{
+            /* border: 1px solid black; */
+            background-color: rgba(255, 255, 255, 0.767);
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.315);
+        }
+        #background{
+  background-image: url(images/earth.jpg);
+  background-position: bottom;
+  background-size: cover;
+ }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row wrapper mx-auto ">
+            <div class="borderblack col-md-4 p-4 mx-auto">
+                <div class="col-12 text-center">
+                    <h1>SignUp</h1>
+                    <p>Fill credentials to create an account.</p>
+                </div>
+                <form action="http://localhost:3000/api/users" method="post">  
+                    <div class=" form-group">
+                        <label>UserName</label><br>
+                        <input class="col-12 py-1 my-1" type="text" name="userName" id="name" required>
+                        
+                    </div>    
+                    <div class=" form-group">
+                        <label>Email</label><br>
+                        <input class="col-12 py-1 my-1" type="email" name="email" id="email" required>
+                        
+                    </div>    
+                    <div class=" form-group">
+                        <label>Phone number</label><br>
+                        <input class="col-12 py-1 my-1" type="number" name="phone" id="phone" required >
+                        
+                    </div>    
+                    <div class="form-group">
+                        <label>Password</label><br>
+                        <input class="col-12 py-1 my-1" type="password" name="password" id="password" required>
+                        
+                    </div>
+                    <div class="form-group">
+                            <br>
+                            <div style="text-align: center;">
+                              <input type="submit" class="btn btn-primary" value="SignUp" >
+                            </div>
+                    <p class="my-2">Already have an account? <a href="login.html">Login</a>.</p>
+                </form>
+            </div>
+        </div> 
+        
+    </div>   
+</body>
+</html>

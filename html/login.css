@@ -1,0 +1,63 @@
+form{
+    margin-left: 30%;
+    margin-top: 5%;
+   font-family: Arial, Helvetica, sans-serif;
+  
+    
+}
+fieldset{
+    border: none;
+    height: 400px;
+    width: 250px;
+    padding: 20px;
+    background-color: aliceblue;
+   
+}
+input{
+    display: block;
+    width: 300px;
+    padding: 5px;
+    border: none;
+}
+body{
+    background-image: linear-gradient(-153deg,rgb(218, 120, 8) 50%,rgb(208, 203, 223) 50%);
+}
+legend{
+   border:none;
+   background-color: rgb(153, 170, 164);
+   border-radius: 50%;
+   width:80px;
+   height: 80px;
+   text-align: center;
+   padding-top: 3px;
+}
+button {
+    background-color: orange;
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+
+}
+h1{
+    text-align: center;
+    color: white;
+}
+#fb{
+    background-color: orange;
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+@media only screen and (min-width: 700px) {
+    .info5 {width: 200%;}
+  }
+  @media only screen and (min-width: 768px) {
+   
+    .info5 {width: 100%;}
+  }
+ 

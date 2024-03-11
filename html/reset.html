@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="lib/bootstrap.min.css">
+
+  <style>
+    body {
+      background-image: url(images/deliveyblue.png);
+      background-position: center;
+      background-size: cover;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        background-size: contain;
+      }
+    }
+
+    .wrapper {
+      margin-top: 50px;
+      width: 100%;
+      padding: 20px;
+    }
+
+    input {
+      border: 1px solid black;
+      border-radius: 5px;
+    }
+
+    .borderblack {
+      background-color: rgb(228, 238, 238);
+      border-radius: 5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.315);
+    }
+
+    #background {
+      background-image: url(images/earth.jpg);
+      background-position: bottom;
+      background-size: cover;
+    }
+
+    /* Center and push down the reset button */
+    .form-group button {
+      display: block;
+      margin: 0 auto;
+      margin-top: 50px; /* Push down by 5px */
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row wrapper mx-auto">
+      <div class="borderblack col-md-4 p-4 mx-auto">
+        <div class="col-12 text-center">
+          <h1>Login</h1>
+          <p>Fill credentials to Login.</p>
+        </div>
+        <form action="" method="post">
+          <div class="form-group">
+            <label for="password">New Password:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Reset Password</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

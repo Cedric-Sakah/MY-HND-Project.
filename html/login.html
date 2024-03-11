@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+  
+  
+    <style>
+        body {
+        background-image: url(images/deliveyblue.png);
+        background-position: center;
+        background-size: cover; 
+        }
+
+        @media (max-width: 768px) {
+        body {
+            background-size: contain; 
+        }
+        }
+        .wrapper{ 
+            margin-top: 50px;
+            width: 100%; 
+            padding: 20px; 
+        }
+        input{
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        .borderblack{
+            /* border: 1px solid black; */
+            background-color: rgb(228, 238, 238);
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.315);
+        }
+        #background{
+            background-image: url(images/earth.jpg);
+            background-position: bottom;
+            background-size: cover;
+            }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row wrapper mx-auto ">
+            <div class="borderblack col-md-4 p-4 mx-auto">
+                <div class="col-12 text-center">
+                    <h1>Login</h1>
+                    <p>Fill credentials to Login.</p>
+                </div>
+                <form action="http://localhost:3000/api/login" method="post">
+                    <div class=" form-group">
+                        <label>Username</label><br>
+                        <input class="col-12 py-1 my-1" type="text" name="userName" id="userName" >
+                        
+                    </div>    
+                   
+                    <div class="form-group">
+                        <label>Password</label><br>
+                        <input class="col-12 py-1 my-1" type="password" name="password" id="password">
+                        <p class="my-2">Forgot password? <a href="reset.html">reset</a>.</p>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <br>
+                            <div style="text-align: center;">
+                              <input type="submit" class="btn btn-primary" value="Login">
+                            </div>
+                          </div>
+                          <p class="my-2">Don't have an Account? <a href="signup.html">SignUp</a>.</p>
+                </form>
+            </div>
+        </div> 
+        
+    </div>   
+</body>
+</html>
