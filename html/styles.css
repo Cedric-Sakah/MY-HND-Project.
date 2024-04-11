@@ -55,15 +55,7 @@
   .search button{
     padding: 0.2% 6%;
   }
-  /* #features {
-    display: flex;
-    justify-content: space-around;
-  } */
-  
-  /* .feature {
-    text-align: center;
-    padding: 20px;
-  } */
+
   [class*="feature"]{
     float: left;
     width: 100%;
@@ -113,3 +105,15 @@
   footer div li a{
     text-decoration: none;
   }
+  .navbar img{
+    border-radius: 3000px;
+  }
+  #services img{
+    border-radius: 10px;
+  }
+  .contenttext p{
+    font-weight: 700;
+  }
+.solutiontext p{
+  font-weight: 700;
+}

@@ -1,56 +1,82 @@
 const bcrypt = require('bcrypt');
-const { User, validateUser } = require('../models/user');
+const User = require('../models/user');
 
-getAllUsers = async (req, res) => {
-  const users = await User.find().sort('userName');
-  res.send(users);
-}
-
-createUser = async (req, res) => {
-  const { error } = validateUser(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-
-  const { userName, email,  phone, password } = req.body;
-
-  let user = await User.findOne({ email });
-  if (user) return res.status(400).send('User already exists.');
-
-  user = new User({ userName, email,  phone, password });
-
-  const salt = await bcrypt.genSalt(10);
-  user.password = await bcrypt.hash(user.password, salt);
-
-  user = await user.save();
-  res.send(user); // Sending only user data without the token
+// Get all users
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.findAll();
+    res.send(users);
+  } catch (error) {
+    res.status(500).send('Error retrieving users from the database.');
+  }
 };
 
-  updateUser = async (req, res) => {
-    const { error } = validate(req.body); 
-    if (error) return res.status(400).send(error.details[0].message);
-    const {userName, email,  phone, password } = req.body
-    const user = await User.findByIdAndUpdate(req.params.id, {userName, email,  phone, password }, {
-      new: true
+// Create user
+const createUser = async (req, res) => {
+  try {
+    // Check if user with provided email already exists
+  
+    const existingUser = await User.findOne({ where: { email: req.body.email,phone_number:req.body.phone_number} });
+    if (existingUser) {
+      // If user already exists, send error response
+      return res.status(400).send('User Already exist');
+    }
+
+    // Hash the password with a salt of 10 letters
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+    // Create user using req.body, replacing plain text password with hashed password
+    const user = await User.create({
+      ...req.body,
+      password: hashedPassword
     });
-  
-    if (!user) return res.status(404).send('The user with the given ID was not found.');
-    
-    res.send(user);
-  };
 
-  deleteUser =  async (req, res) => {
-    const user = await User.findByIdAndRemove(req.params.id);
-  
-    if (!user) return res.status(404).send('The user with the given ID was not found.');
-  
-    res.send(user);
-  };
+    // Redirect to the homepage upon successful user creation
+    res.json({ message: 'Login successful', redirectUrl: '/home.html' }); // Send response once
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
 
-  getUserById = async (req, res) => {
-    const user = await User.findById(req.params.id);
-  
-    if (!user) return res.status(404).send('The user with the given ID was not found.');
-  
-    res.send(user);
-  };
 
- module.exports = {getAllUsers, createUser, updateUser,deleteUser, getUserById}
+
+// Update user
+const updateUser = async (req, res) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+    if (!user) return res.status(404).send('User not found.');
+
+    // Update user properties
+    await user.update(req.body);
+    res.send(user);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
+// Delete user
+const deleteUser = async (req, res) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+    if (!user) return res.status(404).send('User not found.');
+
+    await user.destroy();
+    res.send(user);
+  } catch (error) {
+    res.status(500).send('Error deleting user.');
+  }
+};
+
+// Get user by ID
+const getUserById = async (req, res) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+    if (!user) return res.status(404).send('User not found.');
+
+    res.send(user);
+  } catch (error) {
+    res.status(500).send('Error retrieving user.');
+  }
+};
+
+module.exports = { getAllUsers, createUser, updateUser, deleteUser, getUserById };
